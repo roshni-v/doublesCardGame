@@ -62,9 +62,7 @@ public class ElevensBoard extends Board {
 
 	/**
 	 * Determine if there are any legal plays left on the board.
-	 * In Elevens, there is a legal play if the board contains
-	 * (1) a pair of non-face cards whose values add to 11, or (2) a group
-	 * of three cards consisting of a jack, a queen, and a king in some order.
+	 * There is a legal play if the board contains a pair of cards
 	 * @return true if there is a legal play left on the board;
 	 *         false otherwise.
 	 */
