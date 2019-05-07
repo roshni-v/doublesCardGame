@@ -75,12 +75,12 @@ public class ElevensBoard extends Board {
 	}
 
 	/**
-	 * Check for an 11-pair in the selected cards.
+	 * Check for pairs of cards in the selected cards.
 	 * @param selectedCards selects a subset of this board.  It is list
 	 *                      of indexes into this board that are searched
-	 *                      to find an 11-pair.
+	 *                      to find a pair.
 	 * @return true if the board entries in selectedCards
-	 *              contain an 11-pair; false otherwise.
+	 *              contains a pair; false otherwise.
 	 */
 	private boolean containsPair(List<Integer> selectedCards) {
 		for (int sk1 = 0; sk1 < selectedCards.size(); sk1++) {
@@ -103,7 +103,8 @@ public class ElevensBoard extends Board {
 	 * @return true if the board entries in selectedCards
 	 *              include a jack, a queen, and a king; false otherwise.
 	 */
-	/*private boolean containsJQK(List<Integer> selectedCards) {
+	/*
+	private boolean containsJQK(List<Integer> selectedCards) {
 		boolean foundJack = false;
 		boolean foundQueen = false;
 		boolean foundKing = false;
@@ -118,5 +119,6 @@ public class ElevensBoard extends Board {
 			}
 		}
 		return foundJack && foundQueen && foundKing;
-	} */
+	} 
+	*/
 }
