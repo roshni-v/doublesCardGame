@@ -76,6 +76,8 @@ public class CardGameGUI extends JFrame implements ActionListener {
     private JLabel lossMsg;
     /** The coordinates of the card displays. */
     private Point[] cardCoords;
+    private JLabel gameTime;
+    StopWatch stop = new StopWatch();
 
     /** kth element is true iff the user has selected card #k. */
     private boolean[] selections; 
@@ -228,6 +230,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
         winMsg.setText("You win!");
         panel.add(winMsg);
         winMsg.setVisible(false);
+        
 
         lossMsg = new JLabel();
         lossMsg.setBounds(LABEL_LEFT, LABEL_TOP + LABEL_HEIGHT_INC, 200, 30);
@@ -242,6 +245,12 @@ public class CardGameGUI extends JFrame implements ActionListener {
         totalsMsg.setBounds(LABEL_LEFT, LABEL_TOP + 2 * LABEL_HEIGHT_INC,
                                   250, 30);
         panel.add(totalsMsg);
+        
+        gameTime = new JLabel();
+        gameTime.setBounds(LABEL_LEFT, LABEL_TOP + 3 * LABEL_HEIGHT_INC, 
+        300, 30);
+        panel.add(gameTime);
+        gameTime.setVisible(false);
 
         if (!board.anotherPlayIsPossible()) {
             signalLoss();
@@ -251,6 +260,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
         getContentPane().add(panel);
         getRootPane().setDefaultButton(replaceButton);
         panel.setVisible(true);
+        stop.start();
     }
 
     /**
@@ -332,28 +342,17 @@ public class CardGameGUI extends JFrame implements ActionListener {
             return;
         }
     }
-    
-   /*public class Stopwatch {
-        private long startTime = 0;
-        private long stopTime = 0;
-        private boolean running = false;
-        
-        public void start() {
-            this.startTime = System.currentTimeMillis();
-            this.running = true;
-        }
-        public void stop() {
-            this.stopTime = System.currentTimeMillis();
-            this.running = false;
-        }
-        public */
+   
 
     /**
      * Display a win.
      */
     private void signalWin() {
+        stop.stop();
+        gameTime.setText(stop.getElapsedTime());
         getRootPane().setDefaultButton(restartButton);
         winMsg.setVisible(true);
+        gameTime.setVisible(true);
         totalWins++;
         totalGames++;
     }
