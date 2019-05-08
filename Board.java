@@ -99,7 +99,15 @@ public abstract class Board {
 		return cards[k];
 	}
 
-	/**
+	public int find(Card target)
+        {
+        	for (int i = 0; i < cards.length; i++)
+        		if (target.equals(cards[i]))
+        			return i;
+        
+        	return -1;
+        }
+    	/**
 	 * Replaces selected cards on the board by dealing new cards.
 	 * @param selectedCards is a list of the indices of the
 	 *        cards to be replaced.

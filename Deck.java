@@ -36,6 +36,8 @@ public class Deck {
 				cards.add(new Card(ranks[j], suitString, values[j]));
 			}
 		}
+		cards.add(new Card("JO", 14));
+		cards.add(new Card("JO", 14));
 		size = cards.size();
 		shuffle();
 	}

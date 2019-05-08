@@ -9,7 +9,7 @@ public class ElevensBoard extends Board {
 	/**
 	 * The size (number of cards) on the board.
 	 */
-	private static final int BOARD_SIZE = 9;
+	private static final int BOARD_SIZE = 28;
 
 	/**
 	 * The ranks of the cards for this game to be sent to the deck.
@@ -21,7 +21,7 @@ public class ElevensBoard extends Board {
 	 * The suits of the cards for this game to be sent to the deck.
 	 */
 	private static final String[] SUITS =
-		{"spades", "hearts", "diamonds", "clubs"};
+		{"spades", "hearts"};
 
 	/**
 	 * The values of the cards for this game to be sent to the deck.

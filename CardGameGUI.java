@@ -69,6 +69,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
     private JLabel totalsMsg;
     /** The card displays. */
     private JLabel[] displayCards;
+    private JLabel[] displayBlank;
     /** The win message. */
     private JLabel winMsg;
     /** The loss message. */
@@ -77,7 +78,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
     private Point[] cardCoords;
 
     /** kth element is true iff the user has selected card #k. */
-    private boolean[] selections;
+    private boolean[] selections; 
     /** The number of games won. */
     private int totalWins;
     /** The number of games played. */
@@ -193,6 +194,15 @@ public class CardGameGUI extends JFrame implements ActionListener {
             displayCards[k].addMouseListener(new MyMouseListener());
             selections[k] = false;
         }
+        displayBlank = new JLabel[board.size()];
+        for (int k = 0; k < board.size(); k++) {
+            displayBlank[k] = new JLabel();
+            panel.add(displayBlank[k]);
+            displayBlank[k].setBounds(cardCoords[k].x, cardCoords[k].y,
+                                        CARD_WIDTH, CARD_HEIGHT);
+            displayBlank[k].addMouseListener(new MyMouseListener());
+            selections[k] = false;
+        }
         replaceButton = new JButton();
         replaceButton.setText("Replace");
         panel.add(replaceButton);
@@ -250,7 +260,6 @@ public class CardGameGUI extends JFrame implements ActionListener {
         Toolkit t = panel.getToolkit();
         t.beep();
     }
-
     /**
      * Returns the image that corresponds to the input card.
      * Image names have the format "[Rank][Suit].GIF" or "[Rank][Suit]S.GIF",
@@ -266,10 +275,11 @@ public class CardGameGUI extends JFrame implements ActionListener {
         if (c == null) {
             return "cards/back1.GIF";
         }
-        str += c.rank() + c.suit();
-        if (isSelected) {
-            str += "S";
+        if (!isSelected) {
+            str += "transparent.png";
+            return str;
         }
+        str += c.rank() + c.suit();
         str += ".GIF";
         return str;
     }
@@ -322,6 +332,21 @@ public class CardGameGUI extends JFrame implements ActionListener {
             return;
         }
     }
+    
+   /*public class Stopwatch {
+        private long startTime = 0;
+        private long stopTime = 0;
+        private boolean running = false;
+        
+        public void start() {
+            this.startTime = System.currentTimeMillis();
+            this.running = true;
+        }
+        public void stop() {
+            this.stopTime = System.currentTimeMillis();
+            this.running = false;
+        }
+        public */
 
     /**
      * Display a win.
