@@ -146,10 +146,10 @@ public class CardGameGUI extends JFrame implements ActionListener {
         }
         statusMsg.setText(board.deckSize()
             + " undealt cards remain.");
-        statusMsg.setVisible(true);
+        statusMsg.setVisible(false);
         totalsMsg.setText("You've won " + totalWins
              + " out of " + totalGames + " games.");
-        totalsMsg.setVisible(true);
+        totalsMsg.setVisible(false);
         pack();
         panel.repaint();
     }
@@ -221,13 +221,14 @@ public class CardGameGUI extends JFrame implements ActionListener {
         statusMsg = new JLabel(
             board.deckSize() + " undealt cards remain.");
         panel.add(statusMsg);
-        statusMsg.setBounds(LABEL_LEFT, LABEL_TOP, 250, 30);
+        statusMsg.setBounds(LABEL_LEFT, LABEL_TOP, 250, 30); 
+        statusMsg.setVisible(false);
 
         winMsg = new JLabel();
         winMsg.setBounds(LABEL_LEFT, LABEL_TOP + LABEL_HEIGHT_INC, 200, 30);
         winMsg.setFont(new Font("SansSerif", Font.BOLD, 25));
         winMsg.setForeground(Color.GREEN);
-        winMsg.setText("You win!");
+        winMsg.setText("Game Over!");
         panel.add(winMsg);
         winMsg.setVisible(false);
         
@@ -245,6 +246,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
         totalsMsg.setBounds(LABEL_LEFT, LABEL_TOP + 2 * LABEL_HEIGHT_INC,
                                   250, 30);
         panel.add(totalsMsg);
+        totalsMsg.setVisible(false);
         
         gameTime = new JLabel();
         gameTime.setBounds(LABEL_LEFT, LABEL_TOP + 3 * LABEL_HEIGHT_INC, 
